@@ -12,6 +12,10 @@ Do not expect this to be the worlds best next bolt / frost competetor lol this w
 - Queues (unranked / ranked, random queue)
 - Arenas
 - Kits (boxing, ndbf, sumo)
+- Add the file "messages.yml" for custom message
+- Bedfight and Fireball Fight Feature
+- Full system party
+- Integration of Worldedit
 - **NEW** Navigator menu
 - Leaderboards (Per kit + Global elo)
 - Conversations (/msg, /r)
@@ -32,8 +36,7 @@ Do not expect this to be the worlds best next bolt / frost competetor lol this w
 *And More...*
 
 # Support
-Need support? You can join our discord server and create a ticket!
-- https://discord.vifez.lol
+THIS IS A FORK
 
 # Permissions
 - **electron.admin**
