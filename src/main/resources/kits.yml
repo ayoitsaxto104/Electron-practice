@@ -1,0 +1,18 @@
+kits:
+  bedfight:
+    description:
+      - "&cBreak the opponent's bed to win!"
+    icon: BED
+    color: RED
+    kitType: BED_FIGHT
+    weight: 0
+    ranked: false
+
+  fireball_fight:
+    description:
+      - "&6Use fireballs to knock your opponent!"
+    icon: FIREBALL
+    color: GOLD
+    kitType: FIREBALL_FIGHT
+    weight: 0
+    ranked: false

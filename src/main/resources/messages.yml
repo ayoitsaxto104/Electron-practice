@@ -1,0 +1,61 @@
+general:
+  prefix: "&b&lElectron &7┃ &f"
+  no_permission: "&cNon hai il permesso."
+  player_not_found: "&cGiocatore non trovato."
+  selection_required: "&cFai prima una selezione di WorldEdit!"
+
+arena:
+  not_found: "&cArena non trovata!"
+  already_exists: "&cArena già esistente!"
+  created: "&aArena creata con successo!"
+  deleted: "&aArena eliminata con successo!"
+  first_set: "&aPrima posizione impostata dalla selezione WorldEdit!"
+  second_set: "&aSeconda posizione impostata dalla selezione WorldEdit!"
+  min_set: "&aPunto minimo impostato dalla selezione WorldEdit!"
+  max_set: "&aPunto massimo impostato dalla selezione WorldEdit!"
+  saved: "&bArene salvate su &bArenas.yml&f."
+  kit_added: "&aKit aggiunto all'arena!"
+  kit_removed: "&aKit rimosso dall'arena!"
+
+party:
+  already_in: "&cSei già in un party."
+  created: "&aParty creato."
+  invite_sent: "&aInvito inviato a &e{target}&a."
+  invited: "&e{leader} &7ti ha invitato. Usa &a/party accept &7o &c/party deny&7."
+  no_invite: "&cNessun invito in sospeso."
+  invite_denied: "&7Invito rifiutato."
+  joined: "&aSei entrato nel party."
+  leave_self: "&7Sei uscito dal party."
+  left_broadcast: "&e{player} &7è uscito dal party."
+  disbanded: "&cIl party è stato sciolto."
+  kicked_target: "&cSei stato rimosso dal party."
+  kicked_broadcast: "&e{player} &7è stato rimosso."
+  kick_failed: "&cImpossibile rimuovere il giocatore."
+  must_be_leader: "&cDevi essere il leader."
+  already_in_party: "&cQuel giocatore è già in un party."
+  transfer_success: "&aLeadership trasferita."
+  transfer_broadcast: "&e{player} &7è ora il leader."
+  transfer_failed: "&cImpossibile trasferire la leadership."
+  list_header: "&bParty&7:"
+  list_leader_format: "&e{player} &7(Leader)"
+  list_member_format: "&b{player}"
+  joined_broadcast: "&e{player} &7è entrato nel party."
+  not_in: "&cNon sei in un party."
+
+match:
+  started: "&aMatch iniziato!"
+  ended: "&cMatch terminato!"
+
+elo:
+  win: "&aHai vinto! &7ELO: {change} &7(&e{elo}&7)"
+  lose: "&cHai perso! &7ELO: {change} &7(&e{elo}&7)"
+
+startup:
+  header: "&b&lElectron Practice&7 [Open SRC]"
+  subtitle: "&7&oLightweight open-source practice core"
+  authors: "&fAuthors: &bvifez &f& &eMTR &f& &3axtodev"
+  version: "&fVersion: &b{version}"
+  protocol: "&fProtocol: &b{protocol}"
+  spigot: "&fSpigot: &b{spigot}"
+  discord: "&fDiscord: &bhttps://discord.vifez.lol"
+  github: "&fGithub: &bhttps://electron.vifez.lol"
