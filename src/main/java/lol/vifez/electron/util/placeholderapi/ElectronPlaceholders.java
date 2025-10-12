@@ -1,4 +1,4 @@
-package lol.vifez.electron.placeholderapi;
+package lol.vifez.electron.util.placeholderapi;
 
 import lol.vifez.electron.Practice;
 import lol.vifez.electron.elo.EloUtil;

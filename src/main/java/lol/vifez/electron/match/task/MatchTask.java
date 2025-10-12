@@ -3,18 +3,21 @@ package lol.vifez.electron.match.task;
 import lol.vifez.electron.Practice;
 import lol.vifez.electron.match.MatchManager;
 import lol.vifez.electron.match.enums.MatchState;
+import lol.vifez.electron.match.event.MatchStartEvent;
 import lol.vifez.electron.util.CC;
-import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
 
-@RequiredArgsConstructor
 public class MatchTask extends BukkitRunnable {
 
     private final MatchManager matchHandler;
+
+    public MatchTask(MatchManager matchHandler) {
+        this.matchHandler = matchHandler;
+    }
 
     @Override
     public void run() {
@@ -29,6 +32,8 @@ public class MatchTask extends BukkitRunnable {
 
                 @Override
                 public void run() {
+                    match.setCurrentCountdown(countdown);
+
                     if (countdown > 0) {
                         Arrays.asList(match.getPlayerOne(), match.getPlayerTwo()).forEach(profile -> {
                             profile.getPlayer().sendMessage(
@@ -41,19 +46,35 @@ public class MatchTask extends BukkitRunnable {
                         });
                         countdown--;
                     } else {
+                        match.setCurrentCountdown(0);
                         match.setMatchState(MatchState.STARTED);
 
                         Arrays.asList(match.getPlayerOne(), match.getPlayerTwo()).forEach(profile -> {
+                            if (profile.getKitLoadout().containsKey(match.getKit().getName().toLowerCase())) {
+                                profile.getPlayer().getInventory().setContents(
+                                        profile.getKitLoadout().get(match.getKit().getName().toLowerCase())
+                                );
+                            } else {
+                                profile.getPlayer().getInventory().setContents(match.getKit().getContents());
+                            }
+
+                            profile.getPlayer().getInventory().setArmorContents(match.getKit().getArmorContents());
+                            profile.getPlayer().updateInventory();
+
+                            match.allowMovement(profile.getPlayer());
+
+                            profile.getPlayer().sendMessage(CC.colorize("&aMatch started!"));
                             profile.getPlayer().playSound(
                                     profile.getPlayer().getLocation(),
-                                    Sound.NOTE_PLING, 0.5f, 0.5f
+                                    Sound.NOTE_PLING, 1.0f, 1.0f
                             );
                         });
 
-                        Bukkit.getScheduler().runTask(Practice.getInstance(), () -> {
-                            match.allowMovement(match.getPlayerOne().getPlayer());
-                            match.allowMovement(match.getPlayerTwo().getPlayer());
-                        });
+                        Bukkit.getPluginManager().callEvent(
+                                new MatchStartEvent(
+                                        match.getPlayerOne(), match.getPlayerTwo(), match
+                                )
+                        );
 
                         match.setCountdownRunning(false);
                         this.cancel();

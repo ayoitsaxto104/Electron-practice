@@ -79,25 +79,19 @@ public class MatchManager {
                     match.getKit().getContents()
             );
 
-            profile.getPlayer().getInventory().setArmorContents(match.getKit().getArmorContents());
             profile.getPlayer().getInventory().setContents(loadout);
+            profile.getPlayer().getInventory().setArmorContents(match.getKit().getArmorContents());
+            profile.getPlayer().updateInventory();
 
             if (profile.getQueue() != null) {
                 profile.getQueue().remove(profile.getPlayer());
             }
 
-            Practice.getInstance().getServer().getScheduler().runTaskLater(Practice.getInstance(), () -> {
-                CC.sendMessage(profile.getPlayer(), "&aMatch started!");
-                profile.getPlayer().playSound(profile.getPlayer().getLocation(), Sound.NOTE_PLING, 0.5f, 0.5f);
-                match.setMatchState(MatchState.STARTED);
-                match.allowMovement(profile.getPlayer());
-
-                Bukkit.getPluginManager().callEvent(new MatchStartEvent(profileOne, profileTwo, match));
-            }, 100L);
-
             matches.put(profile.getUuid(), match);
             index++;
         }
+
+        Bukkit.getPluginManager().callEvent(new MatchStartEvent(profileOne, profileTwo, match));
     }
 
     public int getTotalPlayersInMatches() {

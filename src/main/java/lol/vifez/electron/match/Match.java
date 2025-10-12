@@ -39,6 +39,8 @@ public class Match {
     private MatchState matchState = MatchState.STARTING;
 
     private int countdownTime = 5;
+    @Getter @Setter
+    private int currentCountdown = -1;
     private Instant startTime;
 
     private Map<UUID, Integer> hitsMap = new HashMap<>();
